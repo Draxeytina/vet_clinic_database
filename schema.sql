@@ -10,3 +10,8 @@ CREATE TABLE public.animals
     weight_kg numeric,
     PRIMARY KEY (id)
 )
+
+-- ################################# DAY 2 ######################################
+
+ALTER TABLE animals
+ADD species VARCHAR;
