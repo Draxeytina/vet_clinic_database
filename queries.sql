@@ -30,3 +30,12 @@ SELECT * from animals WHERE name NOT IN ('Gabumon');
 -- Find all animals with a weight between 10.4kg and 17.3kg inclusive
 
 SELECT * from animals WHERE weight_kg >= 10.4 AND weight_kg <= 17.3;
+
+-- ################################# DAY 2 ######################################
+
+SELECT count(id) FROM animals;
+SELECT count(id) FROM animals WHERE escape_attempts = 0;
+SELECT avg(weight_kg) from animals;
+SELECT neutered, SUM(escape_attempts) FROM animals GROUP BY neutered;
+SELECT species, MIN(weight_kg), MAX(weight_kg) FROM animals GROUP BY species;
+SELECT species, AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY species;
