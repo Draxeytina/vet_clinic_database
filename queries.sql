@@ -33,9 +33,35 @@ SELECT * from animals WHERE weight_kg >= 10.4 AND weight_kg <= 17.3;
 
 -- ################################# DAY 2 ######################################
 
+
+BEGIN;
+UPDATE animals SET species = 'unspecified'
+ROLLBACK;
+SELECT * from animals;
+
+BEGIN;
+UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
+UPDATE animals SET species = 'pokemon' WHERE species IS null;
+COMMIT;
+SELECT * from animals;
+
+BEGIN;
+DELETE FROM animals;
+ROLLBACK;
+SELECT * FROM animals;
+
+vet_clinic=# BEGIN;
+DELETE FROM animals WHERE date_of_birth > '2022-01-01';
+SAVEPOINT deleteYoung;
+UPDATE animals SET weight_kg = weight_kg * -1;
+ROLLBACK TO deleteYoung;
+UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
+COMMIT;
+SELECT * FROM animals;
+
 SELECT count(id) FROM animals;
 SELECT count(id) FROM animals WHERE escape_attempts = 0;
 SELECT avg(weight_kg) from animals;
-SELECT neutered, SUM(escape_attempts) FROM animals GROUP BY neutered;
+SELECT neutered, MAX(escape_attempts) FROM animals GROUP BY neutered;
 SELECT species, MIN(weight_kg), MAX(weight_kg) FROM animals GROUP BY species;
 SELECT species, AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY species;
