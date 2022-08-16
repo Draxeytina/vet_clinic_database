@@ -62,3 +62,7 @@ FOREIGN KEY (treatments_id) REFERENCES treatments (id)
 --Create indexes for the join table
 CREATE INDEX medical_history_id_asc ON treatment_history_link(medical_history_id ASC)
 CREATE INDEX treatments_id_asc ON treatment_history_link(treatments_id ASC)
+CREATE INDEX patients_id_asc ON medical_histories(patient_id asc)
+CREATE INDEX invoice_id_asc ON invoice_items(invoice_id)
+CREATE INDEX treatment_id_asc ON invoice_items(treatment_id)
+CREATE INDEX medical_history_id_asc2 ON invoices(medical_history_id)
