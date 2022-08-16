@@ -2,6 +2,9 @@
 
 A database for a veterinary clinic created using Postgre.
 
+![vet_clinic_schema](https://user-images.githubusercontent.com/59999191/184983099-acaca750-15a5-41d4-8e81-c13994d47f4e.png)
+
+
 ## Getting Started
 
 This repository includes files with plain SQL that can be used to recreate a database:
